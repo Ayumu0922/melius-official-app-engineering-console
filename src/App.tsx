@@ -550,7 +550,7 @@ function MiniAreaChart({ dataId }: { dataId: string }) {
 
 function BarMeter({ value, colorClass, delay = 0 }: { value: number; colorClass: string; delay?: number }) {
   return (
-    <div className="h-2 min-w-0 flex-1 rounded-full bg-slate-100 dark:bg-white/8">
+    <div className="h-2 min-w-0 flex-1 rounded-full bg-slate-100 dark:bg-white/[0.08]">
       <div className={`bar-grow h-full rounded-full ${colorClass}`} style={{ width: `${value}%`, animationDelay: `${delay}ms` }} />
     </div>
   );
@@ -656,7 +656,7 @@ function SidebarContent({
             data-melius-ui-id="language-toggle"
             data-melius-ui-role="language-toggle"
             onClick={() => setLanguage(language === 'ja' ? 'en' : 'ja')}
-            className="inline-flex h-9 items-center justify-center gap-2 rounded-xl bg-slate-100 px-2 text-xs font-semibold text-slate-700 transition-colors hover:bg-slate-200 dark:bg-white/6 dark:text-slate-300 dark:hover:bg-white/10"
+            className="inline-flex h-9 items-center justify-center gap-2 rounded-xl bg-slate-100 px-2 text-xs font-semibold text-slate-700 transition-colors hover:bg-slate-200 dark:bg-white/[0.06] dark:text-slate-300 dark:hover:bg-white/10"
           >
             <Globe2 className="h-4 w-4" />
             {language === 'ja' ? 'JA' : 'EN'}
@@ -666,14 +666,14 @@ function SidebarContent({
             data-melius-ui-id="theme-toggle"
             data-melius-ui-role="theme-toggle"
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="inline-flex h-9 items-center justify-center gap-2 rounded-xl bg-slate-100 px-2 text-xs font-semibold text-slate-700 transition-colors hover:bg-slate-200 dark:bg-white/6 dark:text-slate-300 dark:hover:bg-white/10"
+            className="inline-flex h-9 items-center justify-center gap-2 rounded-xl bg-slate-100 px-2 text-xs font-semibold text-slate-700 transition-colors hover:bg-slate-200 dark:bg-white/[0.06] dark:text-slate-300 dark:hover:bg-white/10"
           >
             {theme === 'dark' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
             {theme === 'dark' ? t.dark : t.light}
           </button>
         </div>
 
-        <div data-melius-ui-id="sidebar-user-profile" data-melius-ui-role="profile" className="flex items-center gap-3 rounded-xl px-2 py-2.5 transition-colors hover:bg-slate-100 dark:hover:bg-white/8">
+        <div data-melius-ui-id="sidebar-user-profile" data-melius-ui-role="profile" className="flex items-center gap-3 rounded-xl px-2 py-2.5 transition-colors hover:bg-slate-100 dark:hover:bg-white/[0.08]">
           <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-blue-100 text-sm font-semibold text-blue-700 dark:bg-blue-500/15 dark:text-blue-300">AS</div>
           <div className="min-w-0 flex-1">
             <p className="truncate text-sm font-semibold text-slate-950 dark:text-white">{t.userName}</p>
@@ -808,7 +808,7 @@ function OverviewContent({ language }: { language: LanguageChoice }) {
                   type="button"
                   data-melius-ui-id={`overview-incident-${incident.id.toLowerCase()}`}
                   data-melius-ui-role="incident-card"
-                  className="w-full rounded-xl bg-slate-50 p-3 text-left transition-colors hover:bg-slate-100 dark:bg-white/5 dark:hover:bg-white/8"
+                  className="w-full rounded-xl bg-slate-50 p-3 text-left transition-colors hover:bg-slate-100 dark:bg-white/5 dark:hover:bg-white/[0.08]"
                 >
                   <div className="mb-2 flex items-start justify-between gap-3">
                     <StatusPill tone={severityTone(incident.severity)}>{incident.severity}</StatusPill>
@@ -1049,7 +1049,7 @@ function DeploymentsContent({ language }: { language: LanguageChoice }) {
               <div className="min-w-0">
                 <div className="mb-1 flex flex-wrap items-center gap-2">
                   <span className="font-mono text-sm font-semibold text-slate-950 dark:text-white">{deploy.service}</span>
-                  <span className="rounded-md bg-slate-100 px-2 py-0.5 font-mono text-xs text-slate-500 dark:bg-white/8 dark:text-slate-400">{deploy.version}</span>
+                  <span className="rounded-md bg-slate-100 px-2 py-0.5 font-mono text-xs text-slate-500 dark:bg-white/[0.08] dark:text-slate-400">{deploy.version}</span>
                   <StatusPill tone={statusTone(deploy.status)}>{statusLabel(deploy.status, language)}</StatusPill>
                 </div>
                 <p className="truncate text-sm text-slate-500 dark:text-slate-400">{deploy.commit}</p>
@@ -1081,7 +1081,7 @@ function ServicesContent({ language }: { language: LanguageChoice }) {
           {services.map((service, index) => (
             <div key={service.name} data-melius-ui-id={`service-row-${service.name}`} data-melius-ui-role="table-row" className="grid gap-4 p-4 md:grid-cols-[1.2fr_.8fr_.7fr_1fr] md:items-center">
               <div className="flex min-w-0 items-center gap-3">
-                <div className="grid h-10 w-10 place-items-center rounded-xl bg-slate-100 text-slate-600 dark:bg-white/8 dark:text-slate-300">
+                <div className="grid h-10 w-10 place-items-center rounded-xl bg-slate-100 text-slate-600 dark:bg-white/[0.08] dark:text-slate-300">
                   {service.name.includes('db') || service.name.includes('payment') ? <Database className="h-5 w-5" /> : <Server className="h-5 w-5" />}
                 </div>
                 <div className="min-w-0">
@@ -1306,7 +1306,7 @@ function RightPanel({ language }: { language: LanguageChoice }) {
           {team.map((member, index) => (
             <button key={member.name} type="button" data-melius-ui-id={`right-oncall-member-${index + 1}`} data-melius-ui-role="person-row" className="flex w-full items-center gap-3 rounded-lg p-2 text-left transition-colors hover:bg-slate-50 dark:hover:bg-white/5">
               <span className="relative">
-                <span className={`grid h-9 w-9 place-items-center rounded-full text-sm font-semibold ${member.status === 'active' ? 'bg-blue-100 text-blue-700 dark:bg-blue-500/15 dark:text-blue-300' : member.status === 'standby' ? 'bg-amber-100 text-amber-700 dark:bg-amber-400/15 dark:text-amber-300' : 'bg-slate-100 text-slate-500 dark:bg-white/8 dark:text-slate-400'}`}>
+                <span className={`grid h-9 w-9 place-items-center rounded-full text-sm font-semibold ${member.status === 'active' ? 'bg-blue-100 text-blue-700 dark:bg-blue-500/15 dark:text-blue-300' : member.status === 'standby' ? 'bg-amber-100 text-amber-700 dark:bg-amber-400/15 dark:text-amber-300' : 'bg-slate-100 text-slate-500 dark:bg-white/[0.08] dark:text-slate-400'}`}>
                   {member.initials}
                 </span>
                 {member.status === 'active' ? <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-white bg-emerald-500 dark:border-slate-900" /> : null}
