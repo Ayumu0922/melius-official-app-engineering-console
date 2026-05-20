@@ -523,20 +523,20 @@ function MiniAreaChart({ dataId }: { dataId: string }) {
       <svg viewBox="0 0 600 240" className="h-full w-full">
         <defs>
           <linearGradient id="trafficFill" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#2563eb" stopOpacity="0.22" />
-            <stop offset="100%" stopColor="#2563eb" stopOpacity="0" />
+            <stop offset="0%" stopColor="#475569" stopOpacity="0.20" />
+            <stop offset="100%" stopColor="#475569" stopOpacity="0" />
           </linearGradient>
         </defs>
         {[52, 94, 136, 178, 220].map((y) => (
           <line key={y} x1="28" x2="570" y1={y} y2={y} stroke="currentColor" className="text-slate-200 dark:text-white/10" strokeDasharray="4 5" />
         ))}
         <polygon points={fillPoints} fill="url(#trafficFill)" />
-        <polyline points={points} fill="none" stroke="#2563eb" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="chart-trace" />
+        <polyline points={points} fill="none" stroke="#475569" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="chart-trace" />
         {trafficData.map((point, index) => {
           const x = 32 + index * 88;
           const y = 210 - (point.requests / 32000) * 160;
 
-          return <circle key={point.label} cx={x} cy={y} r="4" fill="#2563eb" className="stroke-white dark:stroke-slate-900" strokeWidth="2" />;
+          return <circle key={point.label} cx={x} cy={y} r="4" fill="#475569" className="stroke-white dark:stroke-zinc-900" strokeWidth="2" />;
         })}
         {trafficData.map((point, index) => (
           <text key={point.label} x={32 + index * 88} y="235" textAnchor="middle" className="fill-slate-400 text-[12px] dark:fill-slate-500">
@@ -590,7 +590,7 @@ function SidebarContent({
           <p className="truncate text-[15px] font-semibold tracking-tight text-slate-950 dark:text-white">{t.appName}</p>
           <p className="truncate text-xs text-slate-500 dark:text-slate-400">Engineering console</p>
         </div>
-        <span className="ml-auto rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-semibold text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300">
+        <span className="ml-auto rounded-full bg-green-50 px-2 py-0.5 text-[10px] font-semibold text-green-700 dark:bg-green-500/[0.12] dark:text-green-300">
           {t.live}
         </span>
       </div>
@@ -674,7 +674,7 @@ function SidebarContent({
         </div>
 
         <div data-melius-ui-id="sidebar-user-profile" data-melius-ui-role="profile" className="flex items-center gap-3 rounded-xl px-2 py-2.5 transition-colors hover:bg-slate-100 dark:hover:bg-white/[0.08]">
-          <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-blue-100 text-sm font-semibold text-blue-700 dark:bg-blue-500/15 dark:text-blue-300">AS</div>
+          <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-slate-100 text-sm font-semibold text-slate-700 dark:bg-slate-500/[0.16] dark:text-slate-200">AS</div>
           <div className="min-w-0 flex-1">
             <p className="truncate text-sm font-semibold text-slate-950 dark:text-white">{t.userName}</p>
             <p className="truncate text-xs text-slate-500 dark:text-slate-400">{t.userRole}</p>
@@ -702,7 +702,7 @@ function Header({
   const config = sectionConfig[activeSection];
 
   return (
-    <header data-melius-ui-id="workspace-header" data-melius-ui-role="toolbar" className="hidden min-h-16 shrink-0 items-center justify-between border-b border-slate-200 bg-white px-8 dark:border-white/10 dark:bg-slate-900 lg:flex">
+    <header data-melius-ui-id="workspace-header" data-melius-ui-role="toolbar" className="hidden min-h-16 shrink-0 items-center justify-between border-b border-slate-200 bg-white px-8 dark:border-white/10 dark:bg-zinc-900 lg:flex">
       <div className="min-w-0">
         <h1 className="truncate text-lg font-semibold tracking-tight text-slate-950 dark:text-white">{t[config.titleKey]}</h1>
         <p className="truncate text-sm text-slate-500 dark:text-slate-400">{t[config.subtitleKey]}</p>
@@ -720,7 +720,7 @@ function Header({
         <IconButton dataId="alert-bell-button" roleName="button" label={t.alerts}>
           <span className="relative">
             <Bell className="h-5 w-5" />
-            <span className="status-pulse absolute -right-0.5 -top-0.5 h-2 w-2 rounded-full bg-rose-500" />
+            <span className="status-pulse absolute -right-0.5 -top-0.5 h-2 w-2 rounded-full bg-red-500" />
           </span>
         </IconButton>
         <button
@@ -785,7 +785,7 @@ function OverviewContent({ language }: { language: LanguageChoice }) {
                 <p className="text-sm text-slate-500 dark:text-slate-400">{t.requestsSubtitle}</p>
               </div>
               <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
-                <span className="h-3 w-3 rounded-full bg-blue-600" />
+                <span className="h-3 w-3 rounded-full bg-slate-600 dark:bg-slate-400" />
                 Requests
               </div>
             </div>
@@ -837,9 +837,9 @@ function OverviewContent({ language }: { language: LanguageChoice }) {
               <p className="text-sm text-slate-500 dark:text-slate-400">{t.latencySubtitle}</p>
             </div>
             <div className="flex flex-wrap items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
-              <span className="inline-flex items-center gap-2"><span className="h-3 w-3 rounded-full bg-emerald-500" />P50</span>
-              <span className="inline-flex items-center gap-2"><span className="h-3 w-3 rounded-full bg-blue-600" />P95</span>
-              <span className="inline-flex items-center gap-2"><span className="h-3 w-3 rounded-full bg-fuchsia-500" />P99</span>
+              <span className="inline-flex items-center gap-2"><span className="h-3 w-3 rounded-full bg-stone-500" />P50</span>
+              <span className="inline-flex items-center gap-2"><span className="h-3 w-3 rounded-full bg-slate-600" />P95</span>
+              <span className="inline-flex items-center gap-2"><span className="h-3 w-3 rounded-full bg-amber-600" />P99</span>
             </div>
           </div>
           <div data-melius-ui-id="latency-bar-chart" data-melius-ui-role="chart" className="space-y-4">
@@ -847,9 +847,9 @@ function OverviewContent({ language }: { language: LanguageChoice }) {
               <div key={item.service} className="grid gap-3 md:grid-cols-[120px_1fr] md:items-center">
                 <p className="text-sm font-medium text-slate-600 dark:text-slate-300">{item.service}</p>
                 <div className="space-y-1.5">
-                  <BarMeter value={(item.p50 / 300) * 100} colorClass="bg-emerald-500" delay={index * 60} />
-                  <BarMeter value={(item.p95 / 300) * 100} colorClass="bg-blue-600" delay={index * 80} />
-                  <BarMeter value={(item.p99 / 300) * 100} colorClass="bg-fuchsia-500" delay={index * 100} />
+                  <BarMeter value={(item.p50 / 300) * 100} colorClass="bg-stone-500" delay={index * 60} />
+                  <BarMeter value={(item.p95 / 300) * 100} colorClass="bg-slate-600" delay={index * 80} />
+                  <BarMeter value={(item.p99 / 300) * 100} colorClass="bg-amber-600" delay={index * 100} />
                 </div>
               </div>
             ))}
@@ -878,7 +878,7 @@ function IncidentsContent({ language }: { language: LanguageChoice }) {
               data-melius-ui-role="search-input"
               aria-label={t.search}
               placeholder={t.search}
-              className="h-10 w-full rounded-xl border border-slate-200 bg-white pl-9 pr-3 text-sm text-slate-950 placeholder:text-slate-400 dark:border-white/10 dark:bg-slate-900 dark:text-white dark:placeholder:text-slate-500"
+              className="h-10 w-full rounded-xl border border-slate-200 bg-white pl-9 pr-3 text-sm text-slate-950 placeholder:text-slate-400 dark:border-white/10 dark:bg-zinc-900 dark:text-white dark:placeholder:text-slate-500"
             />
           </div>
           <SoftButton dataId="incident-filter-button" roleName="button" label="Filter">
@@ -902,8 +902,8 @@ function IncidentsContent({ language }: { language: LanguageChoice }) {
               onClick={() => setSelectedId(incident.id)}
               className={`w-full rounded-2xl border p-4 text-left transition-colors ${
                 selectedIncident.id === incident.id
-                  ? 'border-slate-950 bg-white shadow-sm dark:border-white dark:bg-slate-900'
-                  : 'border-slate-200 bg-white hover:border-slate-300 dark:border-white/10 dark:bg-slate-900 dark:hover:border-white/20'
+                  ? 'border-slate-950 bg-white shadow-sm dark:border-white dark:bg-zinc-900'
+                  : 'border-slate-200 bg-white hover:border-slate-300 dark:border-white/10 dark:bg-zinc-900 dark:hover:border-white/20'
               }`}
             >
               <div className="mb-2 flex items-start justify-between gap-3">
@@ -951,7 +951,7 @@ function IncidentsContent({ language }: { language: LanguageChoice }) {
             </div>
             <div className="rounded-xl bg-slate-50 p-4 dark:bg-white/5">
               <p className="mb-1 text-xs text-slate-500 dark:text-slate-400">{t.assignee}</p>
-              <p className="inline-flex items-center gap-2 text-lg font-semibold text-slate-950 dark:text-white"><span className="grid h-6 w-6 place-items-center rounded-full bg-blue-100 text-xs text-blue-700 dark:bg-blue-500/15 dark:text-blue-300">{selectedIncident.initials}</span>{selectedIncident.assignee}</p>
+              <p className="inline-flex items-center gap-2 text-lg font-semibold text-slate-950 dark:text-white"><span className="grid h-6 w-6 place-items-center rounded-full bg-slate-100 text-xs text-slate-700 dark:bg-slate-500/[0.16] dark:text-slate-200">{selectedIncident.initials}</span>{selectedIncident.assignee}</p>
             </div>
             <div className="rounded-xl bg-slate-50 p-4 dark:bg-white/5">
               <p className="mb-1 text-xs text-slate-500 dark:text-slate-400">{t.impacted}</p>
@@ -1010,7 +1010,7 @@ function DeploymentsContent({ language }: { language: LanguageChoice }) {
               <p className="mb-1 text-sm text-slate-500 dark:text-slate-400">{metric.label[language]}</p>
               <div className="flex items-end justify-between gap-3">
                 <p className="text-2xl font-semibold text-slate-950 dark:text-white">{metric.value}</p>
-                <span className="text-sm font-semibold text-emerald-700 dark:text-emerald-300">{metric.change}</span>
+                <span className="text-sm font-semibold text-green-700 dark:text-green-300">{metric.change}</span>
               </div>
             </div>
           </Panel>
@@ -1027,7 +1027,7 @@ function DeploymentsContent({ language }: { language: LanguageChoice }) {
             {deploymentFrequency.map((item, index) => (
               <div key={item.label} className="flex h-full flex-col justify-end gap-2">
                 <div className="flex flex-1 items-end rounded-xl bg-slate-50 px-2 pb-2 dark:bg-white/5">
-                  <div className="bar-grow w-full rounded-lg bg-emerald-500" style={{ height: `${(item.value / 22) * 100}%`, animationDelay: `${index * 65}ms` }} />
+                  <div className="bar-grow w-full rounded-lg bg-slate-600 dark:bg-slate-400" style={{ height: `${(item.value / 22) * 100}%`, animationDelay: `${index * 65}ms` }} />
                 </div>
                 <p className="text-center text-xs font-medium text-slate-500 dark:text-slate-400">{item.label}</p>
               </div>
@@ -1043,7 +1043,7 @@ function DeploymentsContent({ language }: { language: LanguageChoice }) {
         <div className="divide-y divide-slate-200 dark:divide-white/10">
           {deployments.map((deploy) => (
             <button key={deploy.id} type="button" data-melius-ui-id={`deployment-row-${deploy.id.toLowerCase()}`} data-melius-ui-role="table-row" className="grid w-full grid-cols-1 gap-3 p-4 text-left transition-colors hover:bg-slate-50 dark:hover:bg-white/5 md:grid-cols-[44px_1fr_auto] md:items-center">
-              <div className={`grid h-10 w-10 place-items-center rounded-xl ${deploy.status === 'success' ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300' : 'bg-rose-100 text-rose-700 dark:bg-rose-500/15 dark:text-rose-300'}`}>
+              <div className={`grid h-10 w-10 place-items-center rounded-xl ${deploy.status === 'success' ? 'bg-green-50 text-green-700 dark:bg-green-500/[0.12] dark:text-green-300' : 'bg-red-50 text-red-700 dark:bg-red-500/[0.13] dark:text-red-300'}`}>
                 {deploy.status === 'success' ? <CheckCircle2 className="h-5 w-5" /> : <AlertTriangle className="h-5 w-5" />}
               </div>
               <div className="min-w-0">
@@ -1091,7 +1091,7 @@ function ServicesContent({ language }: { language: LanguageChoice }) {
               </div>
               <StatusPill tone={statusTone(service.health)}>{statusLabel(service.health, language)}</StatusPill>
               <p className="font-mono text-sm text-slate-600 dark:text-slate-300">{service.latency}</p>
-              <BarMeter value={service.saturation} colorClass={service.saturation > 88 ? 'bg-rose-500' : service.saturation > 70 ? 'bg-amber-500' : 'bg-blue-600'} delay={index * 70} />
+              <BarMeter value={service.saturation} colorClass={service.saturation > 88 ? 'bg-red-600' : service.saturation > 70 ? 'bg-amber-600' : 'bg-slate-600'} delay={index * 70} />
             </div>
           ))}
         </div>
@@ -1108,7 +1108,7 @@ function ServicesContent({ language }: { language: LanguageChoice }) {
 
             return (
               <div key={item.label.en} className="rounded-xl bg-slate-50 p-4 dark:bg-white/5">
-                <Icon className="mb-3 h-5 w-5 text-blue-600 dark:text-blue-300" />
+                <Icon className="mb-3 h-5 w-5 text-slate-600 dark:text-slate-300" />
                 <p className="text-sm text-slate-500 dark:text-slate-400">{item.label[language]}</p>
                 <p className="mt-1 text-xl font-semibold text-slate-950 dark:text-white">{item.value}</p>
               </div>
@@ -1133,7 +1133,7 @@ function OncallContent({ language }: { language: LanguageChoice }) {
         <div className="space-y-4 p-5 sm:p-6">
           {team.map((member, index) => (
             <div key={member.name} data-melius-ui-id={`oncall-step-${index + 1}`} data-melius-ui-role="timeline-row" className="flex items-center gap-4 rounded-xl bg-slate-50 p-4 dark:bg-white/5">
-              <div className="grid h-10 w-10 place-items-center rounded-full bg-blue-100 text-sm font-semibold text-blue-700 dark:bg-blue-500/15 dark:text-blue-300">{member.initials}</div>
+              <div className="grid h-10 w-10 place-items-center rounded-full bg-slate-100 text-sm font-semibold text-slate-700 dark:bg-slate-500/[0.16] dark:text-slate-200">{member.initials}</div>
               <div className="min-w-0 flex-1">
                 <p className="truncate text-sm font-semibold text-slate-950 dark:text-white">{member.name}</p>
                 <p className="truncate text-xs text-slate-500 dark:text-slate-400">{member.role[language]}</p>
@@ -1253,12 +1253,12 @@ function RightPanel({ language }: { language: LanguageChoice }) {
   const t = COPY[language];
 
   return (
-    <aside data-melius-ui-id="right-context-panel" data-melius-ui-role="aside" className="hidden h-screen w-[280px] shrink-0 flex-col overflow-hidden border-l border-slate-200 bg-white dark:border-white/10 dark:bg-slate-900 xl:flex">
+    <aside data-melius-ui-id="right-context-panel" data-melius-ui-role="aside" className="hidden h-screen w-[280px] shrink-0 flex-col overflow-hidden border-l border-slate-200 bg-white dark:border-white/10 dark:bg-zinc-900 xl:flex">
       <div className="border-b border-slate-200 p-5 dark:border-white/10">
         <div className="mb-4 flex items-center justify-between">
           <h3 className="text-sm font-semibold text-slate-950 dark:text-white">{t.systemStatus}</h3>
-          <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 dark:text-emerald-300">
-            <span className="status-pulse h-2 w-2 rounded-full bg-emerald-500" />
+          <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-green-700 dark:text-green-300">
+            <span className="status-pulse h-2 w-2 rounded-full bg-green-600" />
             {t.operational}
           </span>
         </div>
@@ -1282,7 +1282,7 @@ function RightPanel({ language }: { language: LanguageChoice }) {
         <div className="space-y-3">
           {rightActivity.map((item, index) => (
             <button key={`${item.type}-${index}`} type="button" data-melius-ui-id={`recent-activity-${index + 1}`} data-melius-ui-role="activity-row" className="flex w-full items-start gap-3 rounded-lg p-2 text-left transition-colors hover:bg-slate-50 dark:hover:bg-white/5">
-              <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-lg ${item.status === 'active' ? 'bg-rose-100 text-rose-700 dark:bg-rose-500/15 dark:text-rose-300' : 'bg-emerald-100 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300'}`}>
+              <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-lg ${item.status === 'active' ? 'bg-red-50 text-red-700 dark:bg-red-500/[0.13] dark:text-red-300' : 'bg-green-50 text-green-700 dark:bg-green-500/[0.12] dark:text-green-300'}`}>
                 {item.type === 'incident' && item.status === 'active' ? <AlertTriangle className="h-4 w-4" /> : <CheckCircle2 className="h-4 w-4" />}
               </span>
               <span className="min-w-0 flex-1">
@@ -1306,10 +1306,10 @@ function RightPanel({ language }: { language: LanguageChoice }) {
           {team.map((member, index) => (
             <button key={member.name} type="button" data-melius-ui-id={`right-oncall-member-${index + 1}`} data-melius-ui-role="person-row" className="flex w-full items-center gap-3 rounded-lg p-2 text-left transition-colors hover:bg-slate-50 dark:hover:bg-white/5">
               <span className="relative">
-                <span className={`grid h-9 w-9 place-items-center rounded-full text-sm font-semibold ${member.status === 'active' ? 'bg-blue-100 text-blue-700 dark:bg-blue-500/15 dark:text-blue-300' : member.status === 'standby' ? 'bg-amber-100 text-amber-700 dark:bg-amber-400/15 dark:text-amber-300' : 'bg-slate-100 text-slate-500 dark:bg-white/[0.08] dark:text-slate-400'}`}>
+                <span className={`grid h-9 w-9 place-items-center rounded-full text-sm font-semibold ${member.status === 'active' ? 'bg-slate-100 text-slate-700 dark:bg-slate-500/[0.16] dark:text-slate-200' : member.status === 'standby' ? 'bg-amber-50 text-amber-700 dark:bg-amber-400/[0.14] dark:text-amber-300' : 'bg-zinc-100 text-zinc-500 dark:bg-white/[0.08] dark:text-zinc-400'}`}>
                   {member.initials}
                 </span>
-                {member.status === 'active' ? <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-white bg-emerald-500 dark:border-slate-900" /> : null}
+                {member.status === 'active' ? <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-white bg-green-600 dark:border-zinc-900" /> : null}
               </span>
               <span className="min-w-0">
                 <span className="block truncate text-sm font-semibold text-slate-950 dark:text-white">{member.name}</span>

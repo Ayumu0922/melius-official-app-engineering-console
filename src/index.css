@@ -9,12 +9,12 @@
 html {
   min-width: 320px;
   min-height: 100%;
-  background: #f2f5f8;
+  background: #f5f6f7;
   color-scheme: light;
 }
 
 html.dark {
-  background: #07111f;
+  background: #0d0f12;
   color-scheme: dark;
 }
 
@@ -42,7 +42,7 @@ button:disabled {
 }
 
 ::selection {
-  background: rgba(37, 99, 235, 0.18);
+  background: rgba(71, 85, 105, 0.18);
 }
 
 @keyframes consolePanelIn {
@@ -104,12 +104,12 @@ button:disabled {
 
 .console-panel {
   box-shadow:
-    rgba(14, 63, 126, 0.04) 0 0 0 1px,
-    rgba(42, 51, 69, 0.04) 0 1px 1px -0.5px,
-    rgba(42, 51, 70, 0.04) 0 3px 3px -1.5px,
-    rgba(42, 51, 70, 0.04) 0 6px 6px -3px,
-    rgba(14, 63, 126, 0.04) 0 12px 12px -6px,
-    rgba(14, 63, 126, 0.04) 0 24px 24px -12px;
+    rgba(24, 24, 27, 0.04) 0 0 0 1px,
+    rgba(39, 39, 42, 0.04) 0 1px 1px -0.5px,
+    rgba(39, 39, 42, 0.04) 0 3px 3px -1.5px,
+    rgba(39, 39, 42, 0.04) 0 6px 6px -3px,
+    rgba(24, 24, 27, 0.04) 0 12px 12px -6px,
+    rgba(24, 24, 27, 0.04) 0 24px 24px -12px;
 }
 
 .dark .console-panel {

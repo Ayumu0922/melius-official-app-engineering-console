@@ -43,7 +43,7 @@ export function AppShell({ children, ...props }: HTMLAttributes<HTMLDivElement> 
       {...props}
       data-melius-ui-id="engineering-console-shell"
       data-melius-ui-role="app-shell"
-      className="min-h-screen overflow-hidden bg-[#f2f5f8] text-slate-950 antialiased dark:bg-[#07111f] dark:text-slate-50"
+      className="min-h-screen overflow-hidden bg-[#f5f6f7] text-slate-950 antialiased dark:bg-[#0d0f12] dark:text-slate-50"
     >
       {children}
     </div>
@@ -64,7 +64,7 @@ export function SidebarShell({ children, ...props }: HTMLAttributes<HTMLElement>
       {...props}
       data-melius-ui-id="desktop-left-navigation"
       data-melius-ui-role="navigation"
-      className="hidden h-screen w-[260px] shrink-0 flex-col border-r border-slate-200 bg-white dark:border-white/10 dark:bg-slate-900 lg:flex"
+      className="hidden h-screen w-[260px] shrink-0 flex-col border-r border-slate-200 bg-white dark:border-white/10 dark:bg-zinc-900 lg:flex"
     >
       {children}
     </aside>
@@ -77,7 +77,7 @@ export function MobileDrawer({ children, ...props }: HTMLAttributes<HTMLElement>
       {...props}
       data-melius-ui-id="mobile-navigation-drawer"
       data-melius-ui-role="navigation"
-      className="console-drawer fixed inset-y-0 left-0 z-50 flex w-[min(20rem,calc(100vw-2rem))] flex-col border-r border-slate-200 bg-white shadow-2xl shadow-slate-950/20 dark:border-white/10 dark:bg-slate-900 lg:hidden"
+      className="console-drawer fixed inset-y-0 left-0 z-50 flex w-[min(20rem,calc(100vw-2rem))] flex-col border-r border-slate-200 bg-white shadow-2xl shadow-slate-950/20 dark:border-white/10 dark:bg-zinc-900 lg:hidden"
     >
       {children}
     </aside>
@@ -103,7 +103,7 @@ export function MobileTopBar({ children, ...props }: HTMLAttributes<HTMLDivEleme
       {...props}
       data-melius-ui-id="mobile-top-bar"
       data-melius-ui-role="toolbar"
-      className="flex min-h-14 items-center justify-between border-b border-slate-200 bg-white px-3 dark:border-white/10 dark:bg-slate-900 lg:hidden"
+      className="flex min-h-14 items-center justify-between border-b border-slate-200 bg-white px-3 dark:border-white/10 dark:bg-zinc-900 lg:hidden"
     >
       {children}
     </div>
@@ -140,9 +140,9 @@ export function SearchShell({ children, ...props }: HTMLAttributes<HTMLButtonEle
 export function NavButton({ dataId, roleName, selected, badge, badgeTone, onClick, icon, children }: NavButtonProps) {
   const badgeClass =
     badgeTone === 'red'
-      ? 'bg-rose-100 text-rose-700 dark:bg-rose-500/15 dark:text-rose-300'
+      ? 'bg-red-50 text-red-700 dark:bg-red-500/[0.13] dark:text-red-300'
       : badgeTone === 'amber'
-        ? 'bg-amber-100 text-amber-700 dark:bg-amber-400/15 dark:text-amber-300'
+        ? 'bg-amber-50 text-amber-700 dark:bg-amber-400/[0.14] dark:text-amber-300'
         : 'bg-slate-100 text-slate-500 dark:bg-white/[0.08] dark:text-slate-400';
 
   if (selected) {
@@ -217,7 +217,7 @@ export function DangerButton({ dataId, roleName, label, children, onClick, type 
       data-melius-ui-role={roleName}
       aria-label={label}
       onClick={onClick}
-      className="inline-flex h-9 shrink-0 items-center gap-2 rounded-xl bg-rose-600 px-3 text-sm font-semibold text-white transition-colors hover:bg-rose-700 dark:bg-rose-500 dark:hover:bg-rose-400"
+      className="inline-flex h-9 shrink-0 items-center gap-2 rounded-xl bg-red-600 px-3 text-sm font-semibold text-white transition-colors hover:bg-red-700 dark:bg-red-600 dark:hover:bg-red-500"
     >
       {children}
     </button>
@@ -264,7 +264,7 @@ export function Panel({
       {...props}
       data-melius-ui-id={dataId}
       data-melius-ui-role={roleName}
-      className={`console-panel rounded-2xl border border-slate-200 bg-white dark:border-white/10 dark:bg-slate-900 ${className}`}
+      className={`console-panel rounded-2xl border border-slate-200 bg-white dark:border-white/10 dark:bg-zinc-900 ${className}`}
     >
       {children}
     </div>
@@ -274,25 +274,27 @@ export function Panel({
 export function MetricPanel({ dataId, roleName, icon, label, value, change, tone }: MetricPanelProps) {
   const iconTone =
     tone === 'red'
-      ? 'bg-rose-100 text-rose-600 dark:bg-rose-500/15 dark:text-rose-300'
+      ? 'bg-red-50 text-red-700 dark:bg-red-500/[0.13] dark:text-red-300'
       : tone === 'emerald'
-        ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300'
+        ? 'bg-green-50 text-green-700 dark:bg-green-500/[0.12] dark:text-green-300'
         : tone === 'amber'
-          ? 'bg-amber-100 text-amber-700 dark:bg-amber-400/15 dark:text-amber-300'
-          : 'bg-blue-100 text-blue-700 dark:bg-blue-500/15 dark:text-blue-300';
+          ? 'bg-amber-50 text-amber-700 dark:bg-amber-400/[0.14] dark:text-amber-300'
+          : 'bg-slate-100 text-slate-700 dark:bg-slate-500/[0.16] dark:text-slate-200';
 
   const changeTone =
     tone === 'red'
-      ? 'text-rose-600 dark:text-rose-300'
+      ? 'text-red-700 dark:text-red-300'
       : tone === 'amber'
         ? 'text-amber-700 dark:text-amber-300'
-        : 'text-emerald-700 dark:text-emerald-300';
+        : tone === 'blue'
+          ? 'text-slate-700 dark:text-slate-300'
+          : 'text-green-700 dark:text-green-300';
 
   return (
     <div
       data-melius-ui-id={dataId}
       data-melius-ui-role={roleName}
-      className="console-panel rounded-2xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-slate-900"
+      className="console-panel rounded-2xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-zinc-900"
     >
       <div className="mb-3 flex items-start justify-between">
         <div className={`grid h-10 w-10 place-items-center rounded-xl ${iconTone}`}>{icon}</div>
@@ -307,13 +309,13 @@ export function MetricPanel({ dataId, roleName, icon, label, value, change, tone
 export function StatusPill({ children, tone }: { children: ReactNode; tone: 'red' | 'amber' | 'blue' | 'emerald' | 'neutral' }) {
   const toneClass =
     tone === 'red'
-      ? 'bg-rose-100 text-rose-700 dark:bg-rose-500/15 dark:text-rose-300'
+      ? 'bg-red-50 text-red-700 dark:bg-red-500/[0.13] dark:text-red-300'
       : tone === 'amber'
-        ? 'bg-amber-100 text-amber-700 dark:bg-amber-400/15 dark:text-amber-300'
+        ? 'bg-amber-50 text-amber-700 dark:bg-amber-400/[0.14] dark:text-amber-300'
         : tone === 'blue'
-          ? 'bg-blue-100 text-blue-700 dark:bg-blue-500/15 dark:text-blue-300'
+          ? 'bg-slate-100 text-slate-700 dark:bg-slate-500/[0.16] dark:text-slate-200'
           : tone === 'emerald'
-            ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300'
+            ? 'bg-green-50 text-green-700 dark:bg-green-500/[0.12] dark:text-green-300'
             : 'bg-slate-100 text-slate-600 dark:bg-white/[0.08] dark:text-slate-300';
 
   return <span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${toneClass}`}>{children}</span>;
